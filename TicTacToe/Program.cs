@@ -11,51 +11,31 @@ namespace TicTacToe
         static void Main(string[] args)
         {
             bool winner = false;
-            string[,] choice = new string[3, 3]
-            {
-                { "_", "X", "O" },
-                { "_", "X", "O" },
-                { "_", "X", "O" }
-            };
+            bool playerOneTurn = true;
+            bool boardFull = false;
 
-            Console.WriteLine("Let's play Tic-Tac-Toe");
-            Console.WriteLine("Player One is X and Player Two is O");
-            Console.WriteLine("\n");
+            Console.WriteLine("Let's play Tic-Tac-Toe\n");
+            Console.WriteLine("Player One is X and Player Two is O\n");
 
-            while (!winner)
-            {
-                playerOne();
-                showBoard();
-                playerTwo();
-                showBoard();
-
-                foreach (string option in choice)
-                {
-                    int choiceCounter = 0;
-                    //if (
-                    Console.Write(" " + option);
-                    if (choiceCounter == 2)
-                    {
-                        Console.WriteLine("");
-                        choiceCounter = 0;
-                    }
-                    else
-                    {
-                        choiceCounter++;
-                    }
-                }
-            }
-        }
-
-        public static void showBoard()
-        {
-            string[] board = new string[]
-                {
-                    "_","_","_","_","_","_","_","_","_"
-                };
+            int[] board = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             int boardCounter = 0;
-            foreach (string place in board)
+
+            for (int i = 0; i < board.Length; i++)
+            {
+                if (playerOneTurn)
+                {
+                    Console.WriteLine("Player One please pick a number.");
+                    string playerOneChoice = Console.ReadLine();
+                }
+                else if (!playerOneTurn)
+                {
+                    Console.WriteLine("Player Two please pick a number.");
+                    string playerTwoChoice = Console.ReadLine();
+                }
+            }
+
+            foreach (int place in board)
             {
                 Console.Write(" " + place);
                 if (boardCounter == 2)
@@ -68,18 +48,11 @@ namespace TicTacToe
                     boardCounter++;
                 }
             }
-        }
 
-        public static void playerOne()
-        {
-            Console.WriteLine("Turn: Player One");
-            string playerOne = Console.ReadLine();
-        }
-
-        public static void playerTwo()
-        {
-            Console.WriteLine("Turn: Player Two");
-            string playerTwo = Console.ReadLine();
+            /*while (!winner)
+            {
+                
+            }*/
         }
     }
 }
